@@ -21,9 +21,11 @@ while True:
         break
     if evento == 'Calcular':
         vlr_icms  = float(valores['vlr_prod'])*(float(valores['aliq'])/100)
-        janela['texto_base_icms'].update(f'Base ICMS: {valores["vlr_prod"]}')
-        janela['texto_aliq_icms'].update(f'Aliq ICMS: {valores["aliq"]}')
-        janela['texto_valor_icms'].update(f'Valor ICMS: {vlr_icms}')
+        janela['texto_base_icms'].update(f'Base ICMS: R$ {valores["vlr_prod"]}')
+        janela['texto_aliq_icms'].update(f'Aliq ICMS: {valores["aliq"]}%')
+        formatado_icms = f'Valor ICMS: R$ {vlr_icms:_.2f}'
+        formatado_icms = formatado_icms.replace('.',',').replace('_','.')
+        janela['texto_valor_icms'].update(formatado_icms)
         print(vlr_icms)
 
 janela.close()
