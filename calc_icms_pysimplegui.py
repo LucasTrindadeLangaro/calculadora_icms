@@ -32,14 +32,17 @@ while True:
         if janela['reducao_base'].visible and float(valores['reducao_base']) > 0:
             if float(valores['reducao_base']) == 0:
                 break
-            base_icms = float(valores['vlr_prod'])*(float(valores['reducao_base'])/100)
+            percent_reduc = float(valores['reducao_base'])/100
+            calc_base_icms = float(valores['vlr_prod'])*percent_reduc
+            base_icms = float(valores['vlr_prod'])-calc_base_icms
+            print(base_icms)
             vlr_icms = base_icms*(float(valores['aliq'])/100)
 
             janela['texto_base_icms'].update(f'Base ICMS: R$ {base_icms}')
             janela['texto_reducao'].update(visible=True)
             janela['texto_reducao'].update(f'Redução de Base: {valores["reducao_base"]}%')
             janela['texto_aliq_icms'].update(f'Aliq ICMS: {valores["aliq"]}%')
-
+            
             formatado_icms = f'Valor ICMS: R$ {vlr_icms:_.2f}'
             formatado_icms = formatado_icms.replace('.',',').replace('_','.')
             janela['texto_valor_icms'].update(formatado_icms)
