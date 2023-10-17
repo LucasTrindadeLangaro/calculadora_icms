@@ -10,7 +10,7 @@ layout = [
     [Text('Valor ICMS: ',key='texto_valor_icms')]
 ]
 
-janela = Window("Titulo da janela", layout)
+janela = Window("Calculadora de ICMS", layout)
 
 
 while True:
